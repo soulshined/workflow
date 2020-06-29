@@ -1,0 +1,190 @@
+[user]
+    name = Freer
+    email = davidwfreer@gmail.com
+
+[core]
+    excludesfile = ~/.gitignore_global
+    whitespace = -trailing-space
+    autocrlf = false
+    eol = lf
+    editor = code
+    
+[help]
+    autocorrect = 10
+
+[init]
+    templatedir = ~/.git-templates
+    
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
+
+[instaweb]
+    browser = firefox
+    local = true
+    httpd = apache2 -f
+    port = 4321
+
+[merge]
+    conlfictstyle = diff3
+
+[branch "master"]
+    rebase = true
+
+[url "https://github.com"]
+    insteadOf = gh
+
+[apply]
+    # ignorewhitespace = change
+    # whitespace = nowarn
+
+[log]
+    date = local
+
+[alias]
+    alias = !git config -l | grep alias | cut -c 7-
+
+#alias gui
+    g = gui
+
+#alias MEME it up
+    yolo = push -f origin
+    YOLO = push -f origin master
+    Kappa = push --force-with-lease
+    MOM = merge origin/master --no-edit
+    peeu = p -u origin
+    #delete branches that have been merged
+    RickRoll = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | xargs -n 1 git branch -d;}; f"
+    
+#alias workflow
+    #add 
+    ai = add -i
+    aa = add --all
+
+    #other
+    in = pull --all --dry-run
+    undo = update-ref -d HEAD 
+    typo = commit --allow-empty --amend
+    br = branch
+    broff = branchoff #requires custom branchoff script
+    p = push
+    pua = pull --all
+    squash = merge $@ --squash
+
+    #commit
+    cam = commit -am
+
+    #remote
+    remv = remote -v
+    add-readonly-remote = "!f(){ git remote add ${1}-readonly ${2} && git remote set-url --push ${1}-readonly 'Big oof. You are trying to push to a readonly repo 🤡'; };f"
+    add-readonly-rem = add-readonly-remote
+    arrem = add-readonly-remote
+
+    #checkout
+    co = checkout
+    cop = checkout -B --orphan --no-recurse-submodules #checkout as a pure branch
+
+    #cherry-pick
+    cp = cherry-pick
+    cpc = cherry-pick --continue
+    cpa = cherry-pick --abort
+    cpq = cherry-pick --quit
+
+    #revert
+    rv = revert
+    rvc = revert --continue
+    rva = revert --abort
+
+    #rebase
+    rb  = pull --rebase
+    rbi = pull --rebase -i 
+    rbc = rebase --continue
+    rba = rebase --abort
+    rbs = rebase --skip
+
+    #clone
+    clone-shallow = "!f() { git clone $@ --depth=1 --shallow-submodules; };f"
+
+#alias stage
+    stage = add --all
+    stg = stage
+    stage-patch = add --all -p
+    stgp = stage-patch
+    unstage = reset HEAD --
+
+#alias stash
+    stash-all = stash save --include-untracked
+    sa = stash apply
+    sc = stash clear
+    sls = stash list
+    sp = stash pop
+    ss = stash save
+    sd = stash drop
+    sr = !sh -c "git stash-all && git reset --hard HEAD"
+    sundo = !sh -c "git stash-all && git undo"
+
+#alias diff
+    dc = diff --color
+    dff = !git dc --name-status -r #diff f[iles]
+    dfc = !git dc --cached
+    dfh = !git dc HEAD
+    dfw = !git dc --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+    dfs = !git dc --stat
+    dfstg = !git dc --staged
+    dfrem = !git dc --find-renames --find-copies --format=fuller --color-words master HEAD
+
+#alias search/query
+    #search commit messages
+    q-cm = "!f() { git h --date=short --grep=\"$1\" -i -w; };f" 
+    #search code 
+    q-code = log --decorate=short --format=medium --date=short -S 
+    q-codei = log --decorate=short --format=medium --date=short -p -S
+    q-author = "!f() { git h -i --author=\"$1\"; };f"
+    q-branch-name = "!f() { (git branch -a) | grep $1; }; f"
+    q-br-name = !git q-branch-name
+    q-all = "!f() { (git branch -a ; git ls-files ; git remote -v ) | grep $1; GIT_PAGER=cat git grep $1; }; f"
+
+#alias log history
+    log-json = log --pretty=format:'{%n  \"commit\": \"%H\",%n  \"author\": \"%an <%ae>\",%n  \"date\": \"%ad\",%n  \"message\": \"%f\"%n}'
+    h = log --pretty=format:"%C(yellow)%h\\ %Creset%ad%Cblue\\ [%cn]\\%Cred%d\\ %Creset%s" --decorate --all
+    hs = shortlog -s --
+    h-i = log -m --color -p #interactive
+    h-stat = log -m --color -C --stat
+    h-this = !git h --max-parents=1 #no merges
+    h-me = !git h --author $(git config user.email)
+    h-my-week = !git h-me --since=1.weeks --date=relative
+    h-my-month = !git h-my-week --since=1.months
+    
+#alias info
+    whois = "!f() { git h -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"; };f"
+    root = !git rev-parse --show-toplevel
+    basename = !git root | grep -o '\\/[^\\/]\\+$' | cut -d'/' -f 
+    og = config --get remote.origin.url
+    pingmaster = log origin/master@{\"1 hour ago\"}..origin/master --
+    #list branches in order of most recent commit
+    brage = "!f() { git for-each-ref --sort=committerdate refs/heads $1 --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%ci (%cr) $C\" \"$C\" -- ; done; }; g "
+    nosey = log -M -C --format=\"format:%aN\" --grep \"Revert\" | sort | uniq -c | sort -n
+    nosey-rank = shortlog -sn --no-merges
+    untracked = ls-files --other --exclude-standard
+
+#alias backup
+    export = !sh -c 'git archive --format=zip -o $(git basename)_$(date +%s).zip -9 --prefix=archive/ HEAD'
+    export-tar = !sh -c 'git archive --format=tar.gz -o $(git basename)_$(date +%s).tar.gz -9 --prefix=archive/ HEAD'
+
+#alias MISC & AUTO GENERATED FROM SETUP.PS1
+    suba = submodule add

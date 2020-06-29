@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# mac target: /usr/local/bin
+# win target: ~./.git-commands
+
+# creates a new branch point from current branch
+
+if [[ -z "$1" ]]; then
+    echo 'No branch name given'
+    exit 0
+fi 
+
+name=$1
+
+if git show-ref --heads | grep -wi $1; then
+    echo "Branch already exists"
+    exit 0
+fi
+
+git checkout -b $name
+git commit -m "Initial $1 branch point" --allow-empty --no-verify

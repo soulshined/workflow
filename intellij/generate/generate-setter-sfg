@@ -1,0 +1,35 @@
+#set($paramName = $helper.getParamName($field, $project))
+#set($propName = $helper.getPropertyName($field, $project))
+#set($type = $field.typeName)
+#if($field.modifierStatic)
+static ##
+#end
+#if($propName.endsWith("Code") && !$field.name.equals("planCode")
+    && ($type.equals("Integer") || $type.equals("String")))
+    #set($paramName = $paramName.substring(0, $paramName.indexOf("Code")))
+    #set($propName = $propName.substring(0, $propName.indexOf("Code")))
+    #set($type = $StringUtil.capitalizeWithJavaBeanConvention($StringUtil.sanitizeJavaIdentifier($propName)))
+void set$StringUtil.capitalizeWithJavaBeanConvention($StringUtil.sanitizeJavaIdentifier($propName))($type $paramName) {
+    #if ($field.name == $paramName)
+        #if (!$field.modifierStatic)
+        this.##
+        #else
+            $classname.##
+        #end
+    #end
+    $field.name = $paramName == null
+        ? ${propName}.NULL.getCode()
+        : ${paramName}.getCode();
+}
+#else
+void set$StringUtil.capitalizeWithJavaBeanConvention($StringUtil.sanitizeJavaIdentifier($propName))($field.type $paramName) {
+    #if ($field.name == $paramName)
+        #if (!$field.modifierStatic)
+        this.##
+        #else
+            $classname.##
+        #end
+    #end
+    $field.name = $paramName;
+}
+#end

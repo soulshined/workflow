@@ -1,0 +1,25 @@
+#!/bin/bash
+# git pre-commit hook for excluding files from being commited that contain a @NOCHECKIN tag
+
+# get the staged files
+s_files=$(git diff --name-only --cached)
+
+# if a staged file contains the keyword, get it out of the staged list
+for s_file in ${s_files};do
+    #decided on this pattern to leave room for typos on the end
+    match=$(grep -E "(?:^|\s+)@NOCHECKIN(.*$)" ${s_file})
+    if [[ "${match}" != "" ]];then
+        echo -e "\033[1;33mWARNING: ${s_file} contains the ""@NOCHECKIN flag\033[0m\n"
+        
+        git reset ${s_file}
+    fi
+done
+
+# if there is not any staged file left, fail the commit, otherwise
+# an empty commit would be created.
+s_files=$(git diff --name-only --cached)
+if [[ "${s_files}" = "" ]];then
+    echo -e "\n@NOCHECKIN flag precommit hook: nothing to commit"
+    exit 1
+fi
+exit 0
