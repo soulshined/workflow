@@ -5,9 +5,9 @@
 [core]
     excludesfile = ~/.gitignore_global
     whitespace = -trailing-space
-    autocrlf = false
+    autocrlf = true
     eol = lf
-    editor = code
+    editor = code -w
     
 [help]
     autocorrect = 10
@@ -41,7 +41,7 @@
     port = 4321
 
 [merge]
-    conlfictstyle = diff3
+    conflictstyle = diff3
 
 [branch "master"]
     rebase = true
@@ -74,20 +74,24 @@
 #alias workflow
     #add 
     ai = add -i
-    aa = add --all
+    aa = add .
+    aA = add --all
+    au = add -u
 
     #other
     in = pull --all --dry-run
-    undo = update-ref -d HEAD 
-    typo = commit --allow-empty --amend
+    undo = !git reset --soft HEAD~1
+    typo = commit --allow-empty --amend --no-verify
     br = branch
     broff = branchoff #requires custom branchoff script
     p = push
     pua = pull --all
-    squash = merge $@ --squash
+    squash = !git merge $@ --squash
 
     #commit
-    cam = commit -am
+    cm = commit -m
+    cma = commit --amend
+    cmane = commit --amend --no-edit
 
     #remote
     remv = remote -v
@@ -121,11 +125,8 @@
     clone-shallow = "!f() { git clone $@ --depth=1 --shallow-submodules; };f"
 
 #alias stage
-    stage = add --all
-    stg = stage
     stage-patch = add --all -p
     stgp = stage-patch
-    unstage = reset HEAD --
 
 #alias stash
     stash-all = stash save --include-untracked
@@ -173,12 +174,12 @@
 #alias info
     whois = "!f() { git h -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"; };f"
     root = !git rev-parse --show-toplevel
-    basename = !git root | grep -o '\\/[^\\/]\\+$' | cut -d'/' -f 
+    basename = !git root | grep -o '\\/[^\\/]\\+$' | cut -d'/' -f 2
     og = config --get remote.origin.url
     pingmaster = log origin/master@{\"1 hour ago\"}..origin/master --
     #list branches in order of most recent commit
     brage = "!f() { git for-each-ref --sort=committerdate refs/heads $1 --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%ci (%cr) $C\" \"$C\" -- ; done; }; g "
-    nosey = log -M -C --format=\"format:%aN\" --grep \"Revert\" | sort | uniq -c | sort -n
+    nosey = !sh -c "git log -M -C --format=\"format:%aN\" --grep \"Revert\" | sort | uniq -c | sort -n"
     nosey-rank = shortlog -sn --no-merges
     untracked = ls-files --other --exclude-standard
 
