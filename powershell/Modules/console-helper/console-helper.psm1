@@ -59,7 +59,7 @@ function Get-Input {
   )
   
   begin {
-    $_message = $Message + (?: $Default ? " (default is `"$Default`")" : "")
+    $_message = $Message + ($Default ? " (default is `"$Default`")" : "")
 
     switch ($ExpectedDataType) {
       'string'  { [string] $_expectedDataType = $null }
@@ -145,12 +145,12 @@ function Get-Input {
       } until (![string]::IsNullOrWhiteSpace($result))
     }
 
-    $msg = ?: $ExpectedDataTypeErrorMessage ?? "Invalid data type; expecting $($_expectedDataType.GetType().FullName)"
+    $msg = $ExpectedDataTypeErrorMessage ?? "Invalid data type; expecting $($_expectedDataType.GetType().FullName)"
     while (-not (IsExpectedDataType($result))) {
       $result = (Read-Host $msg).Trim()
     }
     
-    $msg = ?: $ExpectedInputFormatErrorMessage ?? "Invalid format type; expecting $ExpectedInputFormat"
+    $msg = $ExpectedInputFormatErrorMessage ?? "Invalid format type; expecting $ExpectedInputFormat"
     while (-not (IsExpectedInputFormat($result))) {
       $result = (Read-Host $msg).Trim()
     }
