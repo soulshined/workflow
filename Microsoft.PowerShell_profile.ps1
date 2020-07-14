@@ -29,6 +29,7 @@ if ($IsMacOs) {
     New-CustomAlias kqal    'kubectl -n qa logs -f @args'
     New-CustomAlias kstg    'kubectl -n stg @args'
     New-CustomAlias kstgl   'kubectl -n stg logs -f @args'
+    New-Alias       kube    Invoke-Kube
     New-CustomAlias mvni    'mvn clean install @args'
     New-CustomAlias mvnif   'mvn clean install -f @args'
     New-CustomAlias mvnip   'mvn clean install -pl :$($args[0]) -am' #install module and only the ones it needs
