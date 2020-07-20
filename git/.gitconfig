@@ -6,7 +6,6 @@
     excludesfile = ~/.gitignore_global
     whitespace = -trailing-space
     autocrlf = true
-    eol = lf
     editor = code -w
     
 [help]
