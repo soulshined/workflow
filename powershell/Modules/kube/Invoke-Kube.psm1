@@ -21,37 +21,36 @@ function Invoke-Kube {
     }
     
     process {
-        #a better way to search for pods by name
-        #check if first 3 arguments align with searching for pods by name
-        if ($query[0] -eq "get" -and $query[1] -eq "pods" -and $query[2] -and !($query[2].StartsWith("-"))) {
-            $pods = @()
+        #a better way to search for pods and such by name
+        #check if first 3 arguments align with searching for something by name
+        if ($query[0] -eq "get" -and $query[2] -and !($query[2].StartsWith("-"))) {
+            $results = @()
   
-            #initially get all pods
-            $result = kubectl get pods ($query | Select-Object -Skip 3) --namespace $Namespace 
+            #initially get all results
+            $result = kubectl get $query[1] ($query | Select-Object -Skip 3) --namespace $Namespace 
   
             if ($result.Count -eq 0) { return $result }
-            #iterate through all the pods and find similar matching names
+            #iterate through all the results and find similar matching names
             #$result[0] is header
+            $headers = ($result[0] -split " " | Where-Object { $_ })
             for ($i = 1; $i -lt $result.Count; $i++) {
                 #kubectl returns a padded string not an object
                 $pod = $result[$i] -split " " | Where-Object { $_ }
 
                 if ($pod[0] -like "*$($query[2])*") {
-                    $pods += [PSCustomObject]@{
-                        Name     = $pod[0]
-                        Ready    = $pod[1]
-                        Status   = $pod[2]
-                        Restarts = $pod[3]
-                        Age      = $pod[4]
+                    $obj = New-Object -TypeName psobject
+                    for ($j = 0; $j -lt $pod.Count; $j++) {
+                        $obj | Add-Member -Name $headers[$j] -Value $pod[$j] -MemberType NoteProperty
                     }
+                    $results += $obj
                 }
             }  
         
-            if ($pods.Count -gt 0) {
-                return $pods
+            if ($results.Count -gt 0) {
+                return $results
             }
         
-            Write-Host "Error no pods found that matched '*$query[2]*'"
+            Write-Host "Error nothing found that matched '*$($query[2])*'"
         }
         elseif ($PortForward) {
             if (![string]::IsNullOrWhiteSpace($Port)) {
@@ -69,7 +68,7 @@ function Invoke-Kube {
             #getting exact pod or something
 
             Write-Host
-            Invoke-Expression "kubectl --namespace $Namespace $query"
+            Invoke-Expression "kubectl --namespace $Namespace $flags $query"
             Write-Host
         }
     }
