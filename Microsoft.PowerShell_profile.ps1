@@ -4,6 +4,7 @@ New-Variable -Name config -Value @{
     home   = @{ mac = "~/DEV"; win = "D:/David Freer/OneDrive/Programming"; };
     devDir = @{ mac = "~/DEV"; win = "D:/David Freer/OneDrive/Programming"; };
     mvnDir = @{ mac = "/usr/local/maven/apache-maven-3.6.3"; win = $null; };
+    jshell = @{ mac = $null; win = "C:/Program Files/Java/jdk-9.0.1/bin/jshell" }
 } -Visibility Private
 
 if ($PWD.Path -eq (Resolve-Path "~").Path) {
@@ -40,5 +41,6 @@ if ($IsMacOs) {
 }
 
 New-Alias       clip    Set-Clipboard
+New-CustomAlias jshell  "Start-Process '$(Get-CustomConfig($config.jshell))'"
 New-CustomAlias restart "Start-NewPowershell -KillCurrent"
 New-CustomAlias dev     "cd '$(Get-CustomConfig($config.devDir))'"
