@@ -1,9 +1,11 @@
-[intl-\]>[rmouse]
-[escape]>[caps]
-[caps]>[escape]
+[intl-\]>[menu]
 [hyphen]>[\]
 [\]>[hyphen]
 [rwin]>[lalt]
+{obrack}>{-lshift}{obrack}{+lshift}
+{lshift}{obrack}>{obrack}
+{cbrack}>{-lshift}{cbrack}{+lshift}
+{lshift}{cbrack}>{cbrack}
 [escape]>[caps][t&h200][escape]
 [caps]>[escape][t&h200][caps]
 [home]>[home][t&h150][rwin]
