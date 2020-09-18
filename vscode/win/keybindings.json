@@ -16,7 +16,8 @@
     },
     {
         "key": "ctrl+r",
-        "command": "workbench.action.gotoSymbol"
+        "command": "workbench.action.gotoSymbol",
+        "when": "editorTextFocus && !navigator.isInputMode"
     },
     {
         "key": "ctrl+shift+o",
@@ -114,10 +115,6 @@
         "command": "workbench.action.moveEditorToRightGroup"
     },
     {
-        "key": "ctrl+k ,",
-        "command": "workbench.action.openSettingsJson"
-    },
-    {
         "key": "ctrl+k ctrl+shift+right",
         "command": "selectby.regex",
         "when": "editorTextFocus && !editorHasSelection",
@@ -193,5 +190,101 @@
     {
         "key": "ctrl+alt+j",
         "command": "-code-runner.runByLanguage"
+    },
+    {
+        "key": "ctrl+alt+z",
+        "command": "git.revertSelectedRanges",
+        "when": "editorTextFocus || isInDiffEditor"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "-git.revertSelectedRanges",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+g alt+r",
+        "command": "moveby.regex"
+    },
+    {
+        "key": "ctrl+shift+;",
+        "command": "-breadcrumbs.focus",
+        "when": "breadcrumbsPossible"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+k ctrl+shift+f",
+        "command": "search.action.openNewEditor"
+    },
+    {
+        "key": "ctrl+e ctrl+right",
+        "command": "cursorWordPartRight"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "navigator.jump-to-previous-paragraph",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "-navigator.jump-to-previous-paragraph",
+        "when": "editorTextFocus && navigator.isInputMode"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "scrollLineDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-scrollLineDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "-cursorDownSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "-cursorUpSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "scrollLineUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-scrollLineUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "navigator.jump-to-next-symbol",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-navigator.jump-to-next-symbol",
+        "when": "editorTextFocus && navigator.isInputMode"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "navigator.jump-to-previous-symbol",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-navigator.jump-to-previous-symbol",
+        "when": "editorTextFocus && navigator.isInputMode"
     }
 ]
