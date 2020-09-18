@@ -41,6 +41,6 @@ if ($IsMacOs) {
 }
 
 New-Alias       clip    Set-Clipboard
-New-CustomAlias jshell  "Start-Process '$(Get-CustomConfig($config.jshell))'"
 New-CustomAlias restart "Start-NewPowershell -KillCurrent"
+New-CustomAlias jshell  "Start-Process '$(Get-CustomConfig($config.jshell))'"
 New-CustomAlias dev     "cd '$(Get-CustomConfig($config.devDir))'"
