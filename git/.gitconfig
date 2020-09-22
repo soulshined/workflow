@@ -73,9 +73,7 @@
 #alias workflow
     #add 
     ai = add -i
-    aa = add .
-    aA = add --all
-    au = add -u
+    aa = add --all
 
     #other
     in = pull --all --dry-run
@@ -86,11 +84,14 @@
     p = push
     pua = pull --all
     squash = !git merge $@ --squash
+    nuke = reset --hard HEAD && git clean -fd
 
     #commit
-    cm = commit -m
-    cma = commit --amend
-    cmane = commit --amend --no-edit
+    c = commit
+    cam = commit -am
+    fix = commit --fixup
+    amd = commit --amend
+    amdf = commit --amend --no-edit --no-verify
 
     #remote
     remv = remote -v
@@ -114,8 +115,8 @@
     rva = revert --abort
 
     #rebase
-    rb  = pull --rebase
-    rbi = pull --rebase -i 
+    rb  = rebase
+    rbi = rebase -i --autosquash
     rbc = rebase --continue
     rba = rebase --abort
     rbs = rebase --skip
@@ -126,6 +127,7 @@
 #alias stage
     stage-patch = add --all -p
     stgp = stage-patch
+    unstage = reset HEAD --
 
 #alias stash
     stash-all = stash save --include-untracked
