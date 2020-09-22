@@ -1,0 +1,41 @@
+<templateSet group="SFG">
+  <template name="core-test" value="import static org.assertj.core.api.Assertions.assertThat;&#10;&#10;@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = LocalConfig.class)&#10;@RunWith(SpringJUnit4ClassRunner.class)&#10;@Transactional&#10;$SELECTION$&#10;    &#10;    $END$&#10;    &#10;    @Value(value = &quot;${database.username}&quot;)&#10;    private String databaseUsername;&#10;    &#10;    public $CLAZZ$() {&#10;        System.setProperty(&quot;runtimeEnvironment&quot;, &quot;local&quot;);&#10;        System.setProperty(&quot;spring.profiles.active&quot;, &quot;local&quot;);&#10;    }" description="" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="CLAZZ" expression="className()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="arc" value="ApplicationRequestContext arc =&#10;    new ApplicationRequestContext(databaseUsername, &quot;$END$&quot;);&#10;ApplicationRequestThreadLocal.set(arc);" description="" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="dto-test-be" value="    @Test&#10;    public void $test$() throws Exception&#10;    {&#10;        $CLAZZ$ entity = new $CLAZZ$();&#10;        $END$&#10;&#10;        entity = $CCCLAZZ$Service.add$CLAZZ$(entity);&#10;    &#10;        assertThat(entity).isNotNull();&#10;        assertThat(entity.getVersion()).isNotNull();&#10;&#10;        $CLAZZ$ cachedEntity = SerializationUtils.clone(entity);&#10;&#10;        $CLAZZ$DTO dto = $CCCLAZZ$DTOMapper.toDTO(entity);&#10;        assertThat(dto.getId()).isEqualTo(entity.getId());&#10;    &#10;        //simulate updating select properties; the entities properties not updated&#10;        // should remain what they are or not change to null or otherwise&#10;&#10;        $CLAZZ$ entityFromDTO = $CCCLAZZ$DTOMapper.toEntity(dto);&#10;        assertThat(entityFromDTO.getLastPersistenceTransactionType()).isEqualTo(PersistenceTransactionType.ADD);&#10;        assertThat(entityFromDTO.getId()).isEqualTo(dto.getId());&#10;        assertThat(entityFromDTO.getId()).isEqualTo(cachedEntity.getId());&#10;        assertThat(entityFromDTO.getVersion()).isEqualTo(entity.getVersion());&#10;    &#10;        //changes to dto should match in entityFromDTO&#10;        assertThat(DTOTestUtils.compare(dto, entityFromDTO).isEqual()).isTrue();&#10;        assertThat(DTOTestUtils.compare(entityFromDTO, dto).isEqual()).isTrue();&#10;&#10;        //changes to dto should not match original entity&#10;        assertThat(&#10;            DTOTestUtils.compare(dto, cachedEntity).failsExactlyFor()&#10;        ).isTrue();&#10;        assertThat(DTOTestUtils.compare(cachedEntity, dto).isEqual()).isFalse();&#10;    }" description="Business Entity Test" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="test" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CLAZZ" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CCCLAZZ" expression="camelCase(CLAZZ)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="dto-mapper-be" value="@Mapper(config = BusinessEntityDTOMapperConfig.class)&#10;public interface $FILE$ extends BusinessEntityDTOMapper&lt;$Entity$, $Entity$DTO&gt; { }" description="Business Entity Mapper" toReformat="false" toShortenFQNames="true" useStaticImport="true">
+    <variable name="FILE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="false" />
+    <variable name="Entity" expression="substringBefore(FILE, &quot;DTOMapper&quot;)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="dto-mapper-generic" value="@Mapper(config = GenericDTOMapperConfig.class)&#10;public interface $FILE$ extends GenericDTOMapper&lt;$Entity$, $Entity$DTO&gt; { }" description="Generic Mapper" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="FILE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="false" />
+    <variable name="Entity" expression="substringBefore(FILE, &quot;DTOMapper&quot;)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="enum-nullable" value="$SELECTION$ == null&#10;        ? $ENUM$.NULL&#10;        : $SELECTION$" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="ENUM" expression="methodReturnType()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+    </context>
+  </template>
+</templateSet>

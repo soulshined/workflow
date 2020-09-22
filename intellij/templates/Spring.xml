@@ -1,0 +1,16 @@
+<templateSet group="Spring">
+  <template name="logger" value="&lt;logger name=&quot;$NAME$&quot; level=&quot;$ENUM$&quot;/&gt;" description="" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ENUM" expression="enum(&quot;ALL&quot;, &quot;INFO&quot;, &quot;DEBUG&quot;, &quot;WARN&quot;, &quot;OFF&quot;)" defaultValue="&quot;ALL&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="awire" value="@Autowired&#10;$CLAZZ$ $LCLAZZ$;" description="Autowire" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="CLAZZ" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LCLAZZ" expression="decapitalize(CLAZZ)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+</templateSet>

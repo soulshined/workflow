@@ -1,0 +1,13 @@
+<application>
+  <component name="GetterTemplates">
+    <option name="defaultTempalteName" value="SFG" />
+    <option name="templates">
+      <list>
+        <TemplateResource>
+          <option name="fileName" value="SFG" />
+          <option name="template" value="#set($propName = $StringUtil.capitalizeWithJavaBeanConvention($StringUtil.sanitizeJavaIdentifier($helper.getPropertyName($field, $project))))&#10;#set($type = $field.type)&#10;#set($isSFGEnum = false)&#10;#if($propName.endsWith(&quot;Code&quot;) &amp;&amp; !$field.name.equals(&quot;planCode&quot;)&#10;&amp;&amp; ($field.typeName.equals(&quot;Integer&quot;) || $field.typeName.equals(&quot;String&quot;)))&#10;    #set($propName = $propName.substring(0, $propName.indexOf(&quot;Code&quot;)))&#10;    #set($type = $propName)&#10;    #set($isSFGEnum = true)&#10;#end&#10;#if($field.modifierStatic)&#10;static ##&#10;#end&#10;$type ##&#10;#if ($field.boolean)&#10;    #if (!$field.name.startsWith(&quot;has&quot;) &amp;&amp; !$field.name.startsWith(&quot;does&quot;))&#10;        #set($propName = &quot;is&quot; + $propName)&#10;    #else&#10;        #set($propName = $StringUtil.sanitizeJavaIdentifier($helper.getPropertyName($field, $project)))&#10;    #end&#10;#else&#10;get##&#10;#end&#10;$propName() {&#10;return##&#10;#if ($isSFGEnum)&#10;    $field.name == null&#10;? ${propName}.NULL&#10;: ${propName}.NULL.createEnum($field.name);&#10;#else&#10;    $field.name;&#10;#end&#10;}" />
+        </TemplateResource>
+      </list>
+    </option>
+  </component>
+</application>
