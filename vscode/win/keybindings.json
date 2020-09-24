@@ -228,7 +228,7 @@
         "command": "cursorWordPartRight"
     },
     {
-        "key": "ctrl+[",
+        "key": "alt+[",
         "command": "navigator.jump-to-previous-paragraph",
         "when": "editorTextFocus"
     },
@@ -286,5 +286,90 @@
         "key": "ctrl+up",
         "command": "-navigator.jump-to-previous-symbol",
         "when": "editorTextFocus && navigator.isInputMode"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "-navigator.jump-to-previous-paragraph",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-navigator.jump-to-previous-symbol",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "alt+]",
+        "command": "navigator.jump-to-next-paragraph",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "-navigator.jump-to-next-paragraph",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-navigator.jump-to-next-symbol",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "shift+alt+]",
+        "command": "navigator.select-jump-to-next-paragraph",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "ctrl+shift+]",
+        "command": "-navigator.select-jump-to-next-paragraph",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "shift+alt+[",
+        "command": "navigator.select-jump-to-previous-paragraph",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "ctrl+shift+[",
+        "command": "-navigator.select-jump-to-previous-paragraph",
+        "when": "editorTextFocus && navigator.isAnyMode"
+    },
+    {
+        "key": "pageup",
+        "command": "workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "shift+pageup",
+        "command": "-workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "pagedown",
+        "command": "workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "shift+pagedown",
+        "command": "-workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "workbench.action.terminal.scrollDown",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+alt+pagedown",
+        "command": "-workbench.action.terminal.scrollDown",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "workbench.action.terminal.scrollUp",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+alt+pageup",
+        "command": "-workbench.action.terminal.scrollUp",
+        "when": "terminalFocus && terminalProcessSupported"
     }
 ]
