@@ -371,5 +371,21 @@
         "key": "ctrl+alt+pageup",
         "command": "-workbench.action.terminal.scrollUp",
         "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+alt+win+up",
+        "command": "workbench.action.decreaseViewSize"
+    },
+    {
+        "key": "ctrl+shift+alt+win+down",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+shift+alt+win+backspace",
+        "command": "workbench.action.evenEditorWidths"
+    },
+    {
+        "key": "ctrl+shift+alt+win+enter",
+        "command": "workbench.action.toggleEditorWidths"
     }
 ]
