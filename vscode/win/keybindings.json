@@ -373,11 +373,11 @@
         "when": "terminalFocus && terminalProcessSupported"
     },
     {
-        "key": "ctrl+shift+alt+win+up",
+        "key": "ctrl+shift+alt+win+down",
         "command": "workbench.action.decreaseViewSize"
     },
     {
-        "key": "ctrl+shift+alt+win+down",
+        "key": "ctrl+shift+alt+win+up",
         "command": "workbench.action.increaseViewSize"
     },
     {
@@ -387,5 +387,49 @@
     {
         "key": "ctrl+shift+alt+win+enter",
         "command": "workbench.action.toggleEditorWidths"
+    },
+    {
+        "key": "shift+alt+f5",
+        "command": "-workbench.action.compareEditor.previousChange",
+        "when": "textCompareEditorVisible"
+    },
+    {
+        "key": "ctrl+shift+delete",
+        "command": "deleteWordPartRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+backspace",
+        "command": "deleteWordPartLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "python.selectAndRunTestFile",
+        "when": "resourceFilename =~ /test_.*\\.py/"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+`",
+        "command": "-workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.terminal.split",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+5",
+        "command": "-workbench.action.terminal.split",
+        "when": "terminalFocus && terminalProcessSupported"
     }
 ]

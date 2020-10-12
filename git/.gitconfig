@@ -152,7 +152,7 @@
 
 #alias search/query
     #search commit messages
-    q-cm = "!f() { git h --date=short --grep=\"$1\" -i -w; };f" 
+    q-c = "!f() { git h --date=short --grep=\"$1\" -i -w; };f" 
     #search code 
     q-code = log --decorate=short --format=medium --date=short -S 
     q-codei = log --decorate=short --format=medium --date=short -p -S

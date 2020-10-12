@@ -45,9 +45,74 @@
     "region": {
         "prefix": "region",
         "body": [
-            "$LINE_COMMENT region ${1/(.*)/${1:/upcase}/}",
+            "$BLOCK_COMMENT region ${1/(.*)/${1:/upcase}/}",
             "$0",
-            "$LINE_COMMENT endregion ${1/(.*)/${1:/upcase}/}"
+            "$BLOCK_COMMENT endregion ${1/(.*)/${1:/upcase}/}"
+        ]
+    },
+    "snippet": {
+        "scope": "jsonc",
+        "prefix": "snippet",
+        "description": "Create a snippet",
+        "body": [
+            "\"${1:name}\" : {",
+            "\t\"prefix\" : \"$2\",",
+            "\t\"scope\" : \"$3\",",
+            "\t\"description\" : \"$4\",",
+            "\t\"body\" : [",
+            "\t\t$0",
+            "\t]",
+            "}"
+        ],
+    },
+    "open file on startup": {
+        "prefix": "open",
+        "description": "This snippet automatically inserts tasks that let you run a command and open specific file when a workspace is opened",
+        "scope": "jsonc",
+        "body": [
+            "{",
+            "\t\"label\": \"open files\",",
+            "\t\"type\": \"shell\",",
+            "\t\"command\": \"${1:code todo.todo}\",",
+            "\t\"isBackground\": true,",
+            "\t\"dependsOn\": [",
+            "\t\t\"cleanup editors\"",
+            "\t],",
+            "\t\"runOptions\": {",
+            "\t\t\"runOn\": \"folderOpen\"",
+            "\t},",
+            "\t\"presentation\": {",
+            "\t\t\"echo\": false,",
+            "\t\t\"reveal\": \"never\",",
+            "\t\t\"focus\": false,",
+            "\t\t\"clear\": true,",
+            "\t},",
+            "\t\"problemMatcher\": [],",
+            "},",
+            "{",
+            "\t\"label\": \"cleanup editors\",",
+            "\t\"command\": \"\\${command:workbench.action.closeAllEditors}\",",
+            "\t\"isBackground\": true,",
+            "\t\"problemMatcher\": []",
+            "}"
+        ]
+    },
+    "decorator": {
+        "prefix": "decorator",
+        "scope": "python, py",
+        "description": "decorator",
+        "body": [
+            "def $1(_func=None, *, ${2:parameter}$3):",
+            "\tdef decorator_$4(func):",
+            "\t\t@functools.wraps(func)",
+            "\t\tdef $4_wrapper(*args, **kwargs):",
+            "\t\t\t_$2 = $2 if (isinstance($2, Iterable)) else ($2,)",
+            "\t\t\t$0",
+            "\t\t\treturn func(*args, **kwargs)",
+            "\t\treturn $4_wrapper",
+            "",
+            "\tif _func is None: return decorator_$4",
+            "\telse: return decorator_$4(_func)"
         ]
     }
 }

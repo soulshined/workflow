@@ -7,6 +7,7 @@
     //settings
     "workbench.settings.openDefaultSettings": false,
     "workbench.settings.editor": "json",
+
     //theming
     "workbench.colorTheme": "Naysayer88",
     "workbench.iconTheme": "fthtml",
@@ -67,7 +68,7 @@
     },
     "[plaintext]": {
         "editor.rulers": [
-            80, //for git commit message boundary
+            80,
             100
         ]
     },
@@ -79,7 +80,8 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    
+    "javascript.suggest.completeJSDocs": true,
+
     //diff
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.renderSideBySide": true,
@@ -163,6 +165,7 @@
         }
     ],
     "todohighlight.isCaseSensitive": true,
+    "files.autoSave": "onFocusChange",
     "liveServer.settings.donotVerifyTags": true,
     "liveServer.settings.donotShowInfoMsg": true,
     "es6-css-minify.genCSSmap": true,
@@ -173,19 +176,11 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.defaultInterpreterPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Python37_64\\python.exe",
-    "python.linting.enabled": false,
-    "python.insidersChannel": "off",
-    "python.languageServer": "Microsoft",
-    "python.dataScience.askForKernelRestart": false,
-
-    //extn fthtml
+    "python.formatting.provider": "none",
     "fthtml.clearOutputOnSave": true,
-
-    //extn coderunner
     "code-runner.showRunIconInEditorTitleMenu": false,
-
-    //extn navigator
     "navigator.defaultCommand": "JUMP LINES",
-    "navigator.activateWithMostRecentCommand": false
+    "navigator.activateWithMostRecentCommand": false,
+    "navigator.multicursorSupportedCommandsMustAllMatch": false,
+    "python.languageServer": "Jedi"
 }
