@@ -1,19 +1,27 @@
-[user]
-    name = Freer
-    email = davidwfreer@gmail.com
+# region signature
+[http "github.com"]
+    [user]
+        name = Freer
+        email = soulshined@users.noreply.github.com
+        signingkey = F4F04E10D1BF4021
+# endregion signature
 
 [core]
     excludesfile = ~/.gitignore_global
-    whitespace = -trailing-space
-    autocrlf = true
-    editor = code -w
-    
+    whitespace = trailing-space,-space-before-tab,tab-in-indent,cr-at-eol
+    autocrlf = input
+    eol = lf
+
+[commit]
+    gpgsign = true
+
 [help]
     autocorrect = 10
 
 [init]
-    templatedir = ~/.git-templates
-    
+    defaultBranch = master
+    templatedir = ~/.git-templatedir
+
 [color]
     ui = true
 
@@ -33,24 +41,12 @@
     changed = green
     untracked = red
 
-[instaweb]
-    browser = firefox
-    local = true
-    httpd = apache2 -f
-    port = 4321
-
 [merge]
     conflictstyle = diff3
 
 [branch "master"]
     rebase = true
-
-[url "https://github.com"]
-    insteadOf = gh
-
-[apply]
-    # ignorewhitespace = change
-    # whitespace = nowarn
+    insteadOf = main
 
 [log]
     date = local
@@ -69,9 +65,9 @@
     peeu = p -u origin
     #delete branches that have been merged
     RickRoll = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | xargs -n 1 git branch -d;}; f"
-    
+
 #alias workflow
-    #add 
+    #add
     ai = add -i
     aa = add --all
 
@@ -152,9 +148,9 @@
 
 #alias search/query
     #search commit messages
-    q-c = "!f() { git h --date=short --grep=\"$1\" -i -w; };f" 
-    #search code 
-    q-code = log --decorate=short --format=medium --date=short -S 
+    q-c = "!f() { git h --date=short --grep=\"$1\" -i -w; };f"
+    #search code
+    q-code = log --decorate=short --format=medium --date=short -S
     q-codei = log --decorate=short --format=medium --date=short -p -S
     q-author = "!f() { git h -i --author=\"$1\"; };f"
     q-branch-name = "!f() { (git branch -a) | grep $1; }; f"
@@ -171,7 +167,7 @@
     h-me = !git h --author $(git config user.email)
     h-my-week = !git h-me --since=1.weeks --date=relative
     h-my-month = !git h-my-week --since=1.months
-    
+
 #alias info
     whois = "!f() { git h -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"; };f"
     root = !git rev-parse --show-toplevel
@@ -188,5 +184,5 @@
     export = !sh -c 'git archive --format=zip -o $(git basename)_$(date +%s).zip -9 --prefix=archive/ HEAD'
     export-tar = !sh -c 'git archive --format=tar.gz -o $(git basename)_$(date +%s).tar.gz -9 --prefix=archive/ HEAD'
 
-#alias MISC & AUTO GENERATED FROM SETUP.PS1
+#alias MISC
     suba = submodule add
