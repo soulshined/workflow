@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "commonjs",
+        "sourceMap": true,
+        "preserveConstEnums": true,
+        "types": [
+            "node"
+        ],
+        "removeComments": true
+    },
+    "include": [
+        "./lib/**/*",
+        "./cli/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

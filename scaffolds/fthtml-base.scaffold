@@ -1,0 +1,37 @@
+name: fthtml:base
+description:
+scaffold:
+  .dev:
+    .fthtml:
+        imports/:
+        json/:
+        '[files]':
+            - index.fthtml : |
+                doctype "html"
+                html (lang=en) {
+                    head
+                    {
+                        meta (charset=utf-8)
+                        meta (content="IE=edge" http-equiv=X-UA-Compatible)
+                        meta (content="width=device-width, initial-scale=1" name=viewport)
+                        title "{{Page Title}}"
+                    }
+                    body
+                }
+  www:
+    a/:
+    css/:
+    js/:
+  '[files]':
+    - fthtmlconfig.json: |
+        {
+          "rootDir" : ".fthtml",
+          "exportDir" :"www",
+          "jsonDir" : ".fthtml/json",
+          "keepTreeStructure": true
+        }
+    - .gitignore: |
+        node_modules/
+        .fthtml/
+        dist/
+        *.vsix
