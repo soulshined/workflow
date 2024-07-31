@@ -1,16 +1,11 @@
 #configurables & privates
 /.vs
-/.vscode
-/.dev
 /.idea
 
 #Node
 */**/node_modules
 
-#Java
-*/**/catalina.base_IS_UNDEFINED
-
 #Files
 *.todo
 .DS_Store
-debug.log
+*.log

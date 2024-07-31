@@ -16,6 +16,6 @@ HOOK="prepare-commit-msg"
 readonly HOOK
 
 for i in $(find `dirname $0`/*/* -name $HOOK);
-do 
+do
     $i "$@"
 done
