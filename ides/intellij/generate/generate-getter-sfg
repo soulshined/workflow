@@ -1,0 +1,32 @@
+#set($propName = $StringUtil.capitalizeWithJavaBeanConvention($StringUtil.sanitizeJavaIdentifier($helper.getPropertyName($field, $project))))
+#set($type = $field.type)
+#set($isSFGEnum = false)
+#if($propName.endsWith("Code") && !$field.name.equals("planCode")
+&& ($field.typeName.equals("Integer") || $field.typeName.equals("String")))
+    #set($propName = $propName.substring(0, $propName.indexOf("Code")))
+    #set($type = $propName)
+    #set($isSFGEnum = true)
+#end
+#if($field.modifierStatic)
+static ##
+#end
+$type ##
+#if ($field.boolean)
+    #if (!$field.name.startsWith("has") && !$field.name.startsWith("does"))
+        #set($propName = "is" + $propName)
+    #else
+        #set($propName = $StringUtil.sanitizeJavaIdentifier($helper.getPropertyName($field, $project)))
+    #end
+#else
+get##
+#end
+$propName() {
+return##
+    #if ($isSFGEnum)
+        $field.name == null
+        ? ${propName}.NULL
+        : ${propName}.NULL.createEnum($field.name);
+    #else 
+        $field.name;
+    #end
+}

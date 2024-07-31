@@ -1,0 +1,71 @@
+<templateSet group="productivity">
+  <template name="@done" value="@done $DATE$" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="DATE" expression="date()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ANY_OPENAPI_JSON_FILE" value="false" />
+      <option name="ANY_OPENAPI_YAML_FILE" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="ECMAScript6" value="false" />
+      <option name="GENERAL_JSON_FILE" value="false" />
+      <option name="GENERAL_YAML_FILE" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="REQUEST" value="false" />
+      <option name="SHELL_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_ATTRIBUTE" value="false" />
+    </context>
+  </template>
+  <template name="@nci" value="$COMMENT$ @NOCHECKIN $COMMENT_END$" description="nocheckin" toReformat="true" toShortenFQNames="true">
+    <variable name="COMMENT" expression="commentStart()" defaultValue="" alwaysStopAt="false" />
+    <variable name="COMMENT_END" expression="commentEnd()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="/t" value="$COMMENT_START$ TODO: [$CURRENT_DATE$] $COMMENT$$COMMENT_END$" description="todo" toReformat="true" toShortenFQNames="true">
+    <variable name="COMMENT_START" expression="commentStart()" defaultValue="" alwaysStopAt="false" />
+    <variable name="CURRENT_DATE" expression="date()" defaultValue="" alwaysStopAt="false" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT_END" expression="commentEnd()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="/f" value="$COMMENT_START$ FIXME: [$CURRENT_DATE$] &#10;    $COMMENT$ &#10;$COMMENT_END$" description="fixme" toReformat="true" toShortenFQNames="true">
+    <variable name="COMMENT_START" expression="blockCommentStart()" defaultValue="" alwaysStopAt="false" />
+    <variable name="CURRENT_DATE" expression="date()" defaultValue="" alwaysStopAt="false" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT_END" expression="blockCommentEnd()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="/n" value="$COMMENT_START$ NOTE: [$CURRENT_DATE$] $COMMENT$$COMMENT_END$" description="note" toReformat="true" toShortenFQNames="true">
+    <variable name="COMMENT_START" expression="commentStart()" defaultValue="" alwaysStopAt="false" />
+    <variable name="CURRENT_DATE" expression="date()" defaultValue="" alwaysStopAt="false" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT_END" expression="commentEnd()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+</templateSet>

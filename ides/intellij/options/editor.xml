@@ -1,0 +1,60 @@
+<application>
+  <component name="CodeInsightSettings">
+    <option name="SHOW_PARAMETER_NAME_HINTS_ON_COMPLETION" value="true" />
+    <option name="AUTO_POPUP_JAVADOC_INFO" value="true" />
+    <option name="SHOW_FULL_SIGNATURES_IN_PARAMETER_INFO" value="true" />
+    <option name="ADD_UNAMBIGIOUS_IMPORTS_ON_THE_FLY" value="true" />
+  </component>
+  <component name="DefaultFont">
+    <option name="FONT_SIZE" value="14" />
+    <option name="FONT_FAMILY" value="Menlo" />
+  </component>
+  <component name="EditorSettings">
+    <option name="languageBreadcrumbsMap">
+      <map>
+        <entry key="CFML" value="true" />
+        <entry key="CSS" value="true" />
+        <entry key="FTL" value="true" />
+        <entry key="Groovy" value="true" />
+        <entry key="HTML" value="true" />
+        <entry key="Haml" value="true" />
+        <entry key="JAVA" value="false" />
+        <entry key="JSON" value="true" />
+        <entry key="JSP" value="true" />
+        <entry key="JSPX" value="true" />
+        <entry key="JavaScript" value="true" />
+        <entry key="LESS" value="true" />
+        <entry key="SASS" value="true" />
+        <entry key="SCSS" value="true" />
+        <entry key="SQL" value="true" />
+        <entry key="Stylus" value="true" />
+        <entry key="TypeScript" value="true" />
+        <entry key="VTL" value="true" />
+        <entry key="XHTML" value="true" />
+        <entry key="XML" value="true" />
+        <entry key="kotlin" value="true" />
+        <entry key="yaml" value="true" />
+      </map>
+    </option>
+    <option name="USE_CUSTOM_SOFT_WRAP_INDENT" value="true" />
+    <option name="STRIP_TRAILING_SPACES" value="None" />
+    <option name="IS_ENSURE_NEWLINE_AT_EOF" value="true" />
+    <option name="ARE_LINE_NUMBERS_SHOWN" value="false" />
+    <option name="SHOW_BREADCRUMBS" value="false" />
+    <option name="IS_BLOCK_CURSOR" value="true" />
+    <option name="IS_WHITESPACES_SHOWN" value="true" />
+    <option name="KEEP_TRAILING_SPACE_ON_CARET_LINE" value="false" />
+  </component>
+  <component name="TodoConfiguration">
+    <pattern pattern="\b(todo|fixme)\:.*" />
+    <pattern useCustomColors="true" pattern="\b(note)\:.*">
+      <option name="FOREGROUND" value="d800ff" />
+    </pattern>
+    <pattern icon="important" useCustomColors="true" pattern="(@nocheckin)\:.*">
+      <option name="FOREGROUND" value="ffc500" />
+      <option name="FONT_TYPE" value="1" />
+      <option name="EFFECT_COLOR" value="ffc500" />
+      <option name="EFFECT_TYPE" value="2" />
+    </pattern>
+  </component>
+</application>

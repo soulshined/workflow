@@ -1,0 +1,123 @@
+<application>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="/usr/local/bin/node" />
+  </component>
+  <component name="NotRoamableUiSettings">
+    <option name="fontFace" value=".AppleSystemUIFont" />
+    <option name="ideAAType" value="Greyscale" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="AFTER.DISTRACTION.MODE.ARE_GUTTER_ICONS_SHOWN" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.ARE_LINE_NUMBERS_SHOWN" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.EDITOR_TAB_PLACEMENT" value="0" />
+    <property name="AFTER.DISTRACTION.MODE.HIDE_TOOL_STRIPES" value="true" />
+    <property name="AFTER.DISTRACTION.MODE.IS_FOLDING_OUTLINE_SHOWN" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.IS_INDENT_GUIDES_SHOWN" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.IS_RIGHT_MARGIN_SHOWN" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.IS_WHITESPACES_SHOWN" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.SHOW_BREADCRUMBS" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.SHOW_MAIN_TOOLBAR" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.SHOW_METHOD_SEPARATORS" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.SHOW_NAVIGATION_BAR" value="false" />
+    <property name="AFTER.DISTRACTION.MODE.SHOW_STATUS_BAR" value="false" />
+    <property name="ActionMacroConfigurationPanel.SPLITTER_PROPORTION" value="0.5" />
+    <property name="BEFORE.DISTRACTION.MODE.ARE_GUTTER_ICONS_SHOWN" value="true" />
+    <property name="BEFORE.DISTRACTION.MODE.ARE_LINE_NUMBERS_SHOWN" value="false" />
+    <property name="BEFORE.DISTRACTION.MODE.EDITOR_TAB_PLACEMENT" value="1" />
+    <property name="BEFORE.DISTRACTION.MODE.HIDE_TOOL_STRIPES" value="false" />
+    <property name="BEFORE.DISTRACTION.MODE.IS_FOLDING_OUTLINE_SHOWN" value="true" />
+    <property name="BEFORE.DISTRACTION.MODE.IS_INDENT_GUIDES_SHOWN" value="true" />
+    <property name="BEFORE.DISTRACTION.MODE.IS_RIGHT_MARGIN_SHOWN" value="true" />
+    <property name="BEFORE.DISTRACTION.MODE.IS_WHITESPACES_SHOWN" value="true" />
+    <property name="BEFORE.DISTRACTION.MODE.SHOW_BREADCRUMBS" value="false" />
+    <property name="BEFORE.DISTRACTION.MODE.SHOW_MAIN_TOOLBAR" value="false" />
+    <property name="BEFORE.DISTRACTION.MODE.SHOW_METHOD_SEPARATORS" value="false" />
+    <property name="BEFORE.DISTRACTION.MODE.SHOW_NAVIGATION_BAR" value="true" />
+    <property name="BEFORE.DISTRACTION.MODE.SHOW_STATUS_BAR" value="true" />
+    <property name="ColorChooser.RecentColors" value="216-0-255-255,,,255-229-40-255,,,255-226-0-255,,,255-197-0-255" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.95" />
+    <property name="DBE.Default.Dialect" value="" />
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="ExpandRunDashboardTypesPanel" value="false" />
+    <property name="FileTemplates.SelectedTemplate" value="HTML File" />
+    <property name="FindSplitterProportion" value="0.0" />
+    <property name="FrameworksFinderRecursivePanel[0]" value="0.10822511" />
+    <property name="INSPECTION_FILTER_HISTORY" value="grammar" />
+    <property name="InstalledPluginsSearchHistory" value="terminal&#10;termin&#10;term&#10;te&#10;show folder" />
+    <property name="JUnitSupport.hidePassedTests" value="false" />
+    <property name="JUnitSupport.scrollToStackTrace" value="true" />
+    <property name="JUnitSupport.selectFirtsDefect" value="true" />
+    <property name="KEYMAP" value="load change&#10;load changes&#10;organize imports&#10;escape&#10;context actions" />
+    <property name="LayoutCode.codeCleanup" value="true" />
+    <property name="LayoutCode.optimizeImports" value="true" />
+    <property name="LayoutCode.processChangedText" value="true" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="true" />
+    <property name="LayoutCode.rearrangeEntriesMicrosoft SQL Server" value="false" />
+    <property name="LayoutCode.rearrangeEntriesXML" value="false" />
+    <property name="LiveContextsPanel[0]" value="0.10995052" />
+    <property name="LiveContextsPanel[1]" value="0.27801856" />
+    <property name="LiveContextsPanel[2]" value="0.14154282" />
+    <property name="MarketplacePluginsSearchHistory" value="todo&#10;d&#10;json format&#10;json formatt&#10;json for" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="NonModalCommitPromotionState" value="ACCEPTED" />
+    <property name="PluginConfigurable.selectionTab" value="1" />
+    <property name="SettingsSearchHistory" value="loaded size&#10;key&#10;region&#10;template&#10;quick" />
+    <property name="ShowDocumentationInToolWindow" value="false" />
+    <property name="SpringBeansModulesPanel[0]" value="0.23580314" />
+    <property name="SpringBeansModulesPanel[1]" value="0.14204545" />
+    <property name="SpringBeansModulesPanel[2]" value="0.16570008" />
+    <property name="SpringBeansModulesPanel[3]" value="0.19880715" />
+    <property name="SpringRepositoriesModulesPanel[0]" value="0.17955652" />
+    <property name="SqlStructureView.filterD.file.structure.state" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="UITheme.relaunch" value="true" />
+    <property name="appcds.runOnSecondStart" value="IU-202.6948.69-75ab7d4c66ed7ddec392231dbfb153883fdc283ffd355bf637af41388968f928" />
+    <property name="build.toolwindow.Build Output.selection.state" value="com.intellij.build.BuildTreeConsoleView" />
+    <property name="build.toolwindow.Sync.selection.state" value="com.intellij.build.BuildTreeConsoleView" />
+    <property name="build.toolwindow.run.selection.state" value="com.intellij.build.BuildTreeConsoleView" />
+    <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.0" value="300" />
+    <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.1" value="800" />
+    <property name="com.intellij.openapi.roots.ui.configuration.TabbedModuleEditor.selectedEditor" value="Sources" />
+    <property name="create.project.preferred.importer" value="Existing Sources" />
+    <property name="database.notebook.setting.id" value="866e77a7-1455-4927-87c2-ebb9b3fea5a9" />
+    <property name="debugger.smart.chooser.counter" value="3" />
+    <property name="decompiler.legal.notice.accepted" value="true" />
+    <property name="defaultJdkConfigured" value="true" />
+    <property name="es6.show.auto.import" value="true" />
+    <property name="evlsprt3.201" value="13" />
+    <property name="evlsprt3.202" value="12" />
+    <property name="file.gist.reindex.count" value="33656" />
+    <property name="fileTypeChangedCounter" value="7" />
+    <property name="ide.memory.adjusted" value="true" />
+    <property name="ide.self.update.started.for.build" value="IU-201.8538.31" />
+    <property name="installed.kotlin.plugin.version" value="1.4.10-release-IJ2020.2-1" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="js.field.names.completion" value="false" />
+    <property name="js.opt.chain.completion" value="true" />
+    <property name="js.overrides.completion" value="true" />
+    <property name="js.var.names.completion" value="true" />
+    <property name="js.var.names.completion.kind" value="NAMES_ONLY" />
+    <property name="kotlin.plugin.releaseDate" value="1.4.10-release-IJ2020.2-1:2020-09-10" />
+    <property name="last.imported.location" value="$USER_HOME$/DEV/account-validation-parent/account-validation-api" />
+    <property name="lastSeenTip" value="neue-GoToClass.html" />
+    <property name="lastTimeTipsWereShown" value="1590020148288" />
+    <property name="muted.system.shortcut.conflicts.actions" value="CommentByBlockComment&#10;SelectAllOccurrences&#10;ParameterInfo" />
+    <property name="packagesearch.endpoint.url.fulltext" value="https://package-search.services.jetbrains.com/api/search/idea/fulltext" />
+    <property name="packagesearch.endpoint.url.suggest" value="https://package-search.services.jetbrains.com/api/search/idea/suggest" />
+    <property name="packagesearch.status.updated.ts" value="1600194605050" />
+    <property name="project.wizard.group" value="org.jetbrains.idea.maven.wizards.InternalMavenModuleBuilder" />
+    <property name="seenTips" value="neue-GoToClass.html" />
+    <property name="selected.color.option.type" value="LIVE_TEMPLATE_ATTRIBUTES" />
+    <property name="settings.code.style.selected.tab.ECMA Script Level 4" value="Wrapping and Braces" />
+    <property name="settings.code.style.selected.tab.JAVA" value="Tabs and Indents" />
+    <property name="settings.code.style.selected.tab.SCSS" value="Other" />
+    <property name="shared.index.infrastructure.prop" value="4" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="3.9.5" />
+    <property name="typescript.show.auto.import" value="true" />
+    <property name="vcs.branch.view.splitter.proportion" value="0.13651137" />
+    <property name="vcs.history.diff.splitter.proportion" value="0.3633938" />
+    <property name="vcs.log.changes.splitter.proportion" value="0.5414407" />
+  </component>
+</application>

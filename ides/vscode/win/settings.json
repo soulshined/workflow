@@ -1,0 +1,186 @@
+{
+    //persistence
+    "window.restoreWindows": "none",
+    "window.restoreFullscreen": true,
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+    "zenMode.restore": false,
+    //settings
+    "workbench.settings.openDefaultSettings": false,
+    "workbench.settings.editor": "json",
+
+    //theming
+    "workbench.colorTheme": "Naysayer88",
+    "workbench.iconTheme": "fthtml",
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#ffffff15"
+    },
+    "workbench.activityBar.visible": false,
+    "zenMode.hideActivityBar": true,
+    "zenMode.silentNotifications": true,
+    "window.zoomLevel": 0,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+
+    //explorer
+    "explorer.autoReveal": false,
+    "workbench.tree.renderIndentGuides": "always",
+    
+    //editor layout
+    "editor.rulers": [
+        100
+    ],
+    "editor.wordWrapColumn": 100,
+    "editor.fontSize": 14.4,
+    "breadcrumbs.enabled": false,
+    "editor.cursorStyle": "block",
+    "editor.fontFamily": "'Menlo', 'Anonymous Pro', 'Courier New', monospace",
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.accessibilitySupport": "off",
+    "editor.lineNumbers": "relative",
+    "editor.renderLineHighlight": "all",
+    "editor.wrappingIndent": "deepIndent",
+    "[javascript]": {
+        "editor.wrappingIndent": "deepIndent",
+        "editor.formatOnType": true
+    },
+    "[typescript]": {
+        "editor.wrappingIndent": "same",
+        "editor.formatOnType": true,
+        "navigator.allowableSymbols": [
+            "Class",
+            "Constructor",
+            "Enum",
+            "Function",
+            "Method",
+            "Namespace",
+            "Struct",
+            "Property"
+        ]
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": false,
+        "navigator.allowableSymbols": [
+            "Module"
+        ]
+    },
+    "[plaintext]": {
+        "editor.rulers": [
+            80,
+            100
+        ]
+    },
+    "explorer.openEditors.visible": 10,
+
+    //coding
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.scrollBeyondLastLine": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "javascript.suggest.completeJSDocs": true,
+
+    //diff
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.renderSideBySide": true,
+    
+    //debug
+    "debug.onTaskErrors": "debugAnyway",
+    "debug.javascript.codelens.npmScripts": "never",
+    
+    //source control
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    
+    //search
+    "search.searchEditor.defaultNumberOfContextLines": 2,
+    
+    //suggestions
+    "editor.suggestSelection": "first",
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.suggest.localityBonus": true,
+    "editor.suggest.filterGraceful": false,
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    
+    //terminal
+    "powershell.promptToUpdatePowerShell": false,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.rightClickBehavior": "copyPaste",
+    "terminal.external.windowsExec": "%SystemRoot%\\system32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    
+    //extensions
+    "extensions.autoUpdate": false,
+    "bracket-pair-colorizer-2.colors": [],
+    "sync.gist": "",
+    "sync.quietSync": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true,
+    "sync.autoDownload": true,
+    "sync.autoUpload": false,
+    "sync.forceDownload": false,
+    "scss.validate": false,
+    "todo.colors.cancelled": "#6D737C",
+    "todo.colors.done": "#6D737C",
+    "todo.colors.tag": "#3E678B",
+    "todo.colors.project": "#E2C08D",
+    "todo.colors.code": "#ccc",
+    "todo.statistics.project.text": "([finished]/[all]) TTC: [est]",
+    "todo.colors.tags.background": [
+        "#e54545",
+        "#e59f45",
+        "#6495ed",
+        "#ae81ff"
+    ],
+    "todohighlight.keywords": [
+        {
+            "text": "NOTE",
+            "color": "black",
+            "backgroundColor": "#ECE5F0",
+        },
+        {
+            "text": "FIXME",
+            "color": "white",
+            "backgroundColor": "#E98A15",
+            "overviewRulerColor": "#e98a15"
+        },
+        {
+            "text": "TODO",
+            "color": "white",
+            "backgroundColor": "#004e98",
+            "overviewRulerColor": "#004e98"
+        },
+        {
+            "text": "@NOCHECKIN",
+            "color": "red",
+        },
+        {
+            "text": "@ATTN",
+            "color": "#FFF",
+            "backgroundColor": "tomato",
+            "overviewRulerColor": "#F00"
+        }
+    ],
+    "todohighlight.isCaseSensitive": true,
+    "files.autoSave": "onFocusChange",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "es6-css-minify.genCSSmap": true,
+    "es6-css-minify.hideButton": "always",
+    "es6-css-minify.minifyOnSave": "exists",
+    "javascript.suggest.completeFunctionCalls": true,
+    "typescript.suggest.completeFunctionCalls": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.formatting.provider": "none",
+    "fthtml.clearOutputOnSave": true,
+    "code-runner.showRunIconInEditorTitleMenu": false,
+    "navigator.defaultCommand": "JUMP LINES",
+    "navigator.activateWithMostRecentCommand": false,
+    "navigator.multicursorSupportedCommandsMustAllMatch": false,
+    "python.languageServer": "Jedi"
+}

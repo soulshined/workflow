@@ -1,0 +1,38 @@
+<templateSet group="MVC">
+  <template name="mockGet" value="MvcResult result = mockMvc.perform(&#10;    get('$URL$')&#10;    .contentType($CONTENT_TYPE$)&#10;    .content(customObjectMapper.writeValueAsString($OBJECT$))&#10;).andExpect(status().isOk()).andReturn()&#10;&#10;$EXPECTED_TYPE$ resultItem = customObjectMapper.readValue(result.getResponse().getContentAsString(), $EXPECTED_TYPE$.class);" description="Mock mvc snippet for performing GET requests. This assumes customObjectMapper" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="URL" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true" />
+    <variable name="CONTENT_TYPE" expression="complete(subtypes(MediaType))" defaultValue="&quot;MediaType.APPLICATION_JSON&quot;" alwaysStopAt="true" />
+    <variable name="OBJECT" expression="variableOfType(methodReturnType())" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPECTED_TYPE" expression="methodReturnType()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="mockPut" value="MvcResult result = mockMvc.perform(&#10;    put('$URL$')&#10;    .contentType($CONTENT_TYPE$)&#10;    .content(customObjectMapper.writeValueAsString($OBJECT$))&#10;).andExpect(status().isOk()).andReturn()&#10;&#10;$EXPECTED_TYPE$ resultItem = customObjectMapper.readValue(result.getResponse().getContentAsString(), $EXPECTED_TYPE$.class);" description="" toReformat="false" toShortenFQNames="true" useStaticImport="true">
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CONTENT_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OBJECT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPECTED_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="mockPost" value="MvcResult result = mockMvc.perform(&#10;    post('$URL$')&#10;    .contentType($CONTENT_TYPE$)&#10;    .content(customObjectMapper.writeValueAsString($OBJECT$))&#10;).andExpect(status().isOk()).andReturn()&#10;&#10;$EXPECTED_TYPE$ resultItem = customObjectMapper.readValue(result.getResponse().getContentAsString(), $EXPECTED_TYPE$.class);" description="" toReformat="false" toShortenFQNames="true" useStaticImport="true">
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CONTENT_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OBJECT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPECTED_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="mockGetMany" value="MvcResult result = mockMvc.perform(&#10;    get('$URL$')&#10;    .contentType($CONTENT_TYPE$)&#10;    .content(customObjectMapper.writeValueAsString($OBJECT$))&#10;).andExpect(status().isOk()).andReturn()&#10;&#10;List&lt;$EXPECTED_TYPE$&gt; resultItems = customObjectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference&lt;List&lt;$EXPECTED_TYPE$&gt;&gt;() {});" description="" toReformat="false" toShortenFQNames="true" useStaticImport="true">
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CONTENT_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OBJECT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPECTED_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>
