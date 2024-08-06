@@ -1,0 +1,40 @@
+TOPIC
+    about_Scaffold
+
+SHORT DESCRIPTION
+    Scaffold is project/directory orchestration utility for creating similiar/frequently created folder & file layouts
+
+LONG DESCRIPTION
+
+    Scaffold is project/directory orchestration utility for creating similiar/frequently created folder & file layouts.
+
+    Use scaffold for creating coding projects you frequently create in the same way.
+
+    How it works:
+
+    For any layout of a directory you frequently use, or just want to template, scaffold effectively takes that directory,
+    makes a snapshot of that directory, recursively, including any file's text and saves it as yaml
+
+    Once a scaffold is created you can navigate to any directory and mount that saved scaffold to it.
+
+    For example, assume there's a scaffold created for a `css:base` project, any directory you want to include all of that scaffolds folders, files, and layout you would mount it by:
+
+    ```
+    Mount-Scaffold css:base
+    ```
+
+    or multiple:
+
+    ```
+    Mount-Scaffold css:base, css:minify
+    ```
+
+    Other notable features included in Scaffold:
+
+    -- Templating support
+    -- YAML based orchestration
+    -- Mount multiple scaffolds at once to a given destination
+    -- PowerShell argument completer to remind you of the names you've added
+
+SEE ALSO
+    https://github.com/soulshined/scaffold/wiki

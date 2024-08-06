@@ -1,3 +1,5 @@
+/home/freer/.local/bin/oh-my-posh init pwsh | Invoke-Expression -ErrorAction Ignore
+
 if ($IsMacOs) {
     Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
     Set-PSReadLineKeyHandler -Key Escape -Function UndoAll
