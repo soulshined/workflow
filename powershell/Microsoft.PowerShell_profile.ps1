@@ -1,4 +1,4 @@
-/home/freer/.local/bin/oh-my-posh init pwsh | Invoke-Expression -ErrorAction Ignore
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json"  | Invoke-Expression -ErrorAction Ignore
 
 if ($IsMacOs) {
     Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete

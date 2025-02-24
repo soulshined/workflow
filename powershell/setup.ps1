@@ -19,18 +19,30 @@ $PEnv = [pscustomobject]@{
         }
     }
     ENV_VARS        = [ordered]@{
-        KUBECONFIG = { $PEnv.HOMES.Kubeconfig.ToString() }
-        M2_HOME    = { $PEnv.HOMES.Mvn.ToString() }
-        M2         = [ProfileEnvItem]@{
+        KUBECONFIG  = { $PEnv.HOMES.Kubeconfig.ToString() }
+        M2_HOME     = { $PEnv.HOMES.Mvn.ToString() }
+        M2          = [ProfileEnvItem]@{
             IsPath = $true
             All    = '"$Env:M2_HOME/bin"'
         }
-        mvn        = [ProfileEnvItem]@{
+        mvn         = [ProfileEnvItem]@{
             IsPath = $true
             All    = '"$Env:M2/mvn"'
         }
+        PHP_HOME    = [ProfileEnvItem]@{
+            IsPath = $true
+            Win    = 'C:\Server\php\php8.4.2'
+        }
+        APACHE_HOME = [ProfileEnvItem]@{
+            IsPath = $true
+            Win    = 'C:\Server\apache\Apache24\bin'
+        }
     }
-    PATHS_TO_APPEND = { $PEnv.ENV_VARS.M2.ToString() }
+    PATHS_TO_APPEND = @( { $PEnv.ENV_VARS.M2.ToString() },
+        { $PEnv.ENV_VARS.PHP_HOME.ToString() },
+        { $PEnv.ENV_VARS.APACHE_HOME.ToString() },
+        'C:\Program Files\MySQL\MySQL Server 8.0\bin'
+    )
     ALIASES         =
     @{
         Condition = { $PEnv.HOMES.Mvn.HasValue() }
@@ -101,7 +113,7 @@ $PEnv.ENV_VARS.GetEnumerator() | % {
 
     if (-not $Value) { return }
 
-    $EnvVarsContents += "`n[System.Environment]::SetEnvironmentVariable('{0}', { 1 })" -f $_.Key, $Value
+    $EnvVarsContents += "`n[System.Environment]::SetEnvironmentVariable('{0}', '{1}')" -f $_.Key, $Value
 }
 
 @{
@@ -128,7 +140,7 @@ $PathsToAppend = $PEnv.PATHS_TO_APPEND | % {
 } | ? { $_ }
 
 if ($PathsToAppend.Count -gt 0) {
-    $ProfileContents += "`n`$Env:PATH += '{0}'" -f ($PathsToAppend -join ', ')
+    $ProfileContents += "`n`$Env:PATH += ';{0}'" -f ($PathsToAppend -join [IO.Path]::PathSeparator)
 }
 
 $PEnv.ALIASES | % {
@@ -148,4 +160,8 @@ $PEnv.ALIASES | % {
     $ProfileContents += "`n$Value"
 }
 
-$ProfileContents.Trim() | Out-File $PROFILE -Force
+if ($WhatIfPreference) {
+    $ProfileContents | Write-Host -ForegroundColor DarkMagenta
+}
+
+$ProfileContents.Trim() | Out-File $PROFILE -Force -WhatIf:$WhatIfPreference
