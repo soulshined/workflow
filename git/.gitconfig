@@ -3,24 +3,26 @@
     [user]
         name = Freer
         email = soulshined@users.noreply.github.com
-        signingkey = F4F04E10D1BF4021
+        signingkey = ~/.ssh/gh
 # endregion signature
 
 [core]
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/Programming/personal/workflow/git/.gitignore_global
     whitespace = trailing-space,-space-before-tab,tab-in-indent,cr-at-eol
     autocrlf = input
     eol = lf
 
 [commit]
     gpgsign = true
+[gpg]
+    format = ssh
 
 [help]
     autocorrect = 10
 
 [init]
     defaultBranch = master
-    templatedir = ~/.git-templatedir
+    templatedir = ~/Programming/personal/workflow/git/.git_template_dir
 
 [color]
     ui = true

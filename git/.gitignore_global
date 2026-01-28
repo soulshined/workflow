@@ -1,11 +1,8 @@
 #configurables & privates
-/.vs
-/.idea
 
 #Node
 */**/node_modules
 
 #Files
-*.todo
 .DS_Store
 *.log
