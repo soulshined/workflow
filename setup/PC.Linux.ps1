@@ -41,3 +41,9 @@ source ~/.profile
 nvm --version
 nvm install node
 npm install -g $(cat $Env:WORKFLOW_DIR/dependencies/node/packages.txt)
+
+mkdir -p ~/Downloads
+cd ~/Downloads
+curl -o dotnet-install.sh https://dot.net/v1/dotnet-install.sh
+./dotnet-install.sh -channel STS -version latest --install-dir $HOME/.dotnet
+ln -s $HOME/.dotnet/dotnet /usr/bin
