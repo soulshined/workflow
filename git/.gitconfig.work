@@ -1,0 +1,15 @@
+[user]
+	email = dfreer@sfgmembers.com
+	signingkey = BD29E2E989D24355
+
+[trailer "acg"]
+	key = Automated-Code-Generation
+
+[trailer "wi"]
+	key = Work-Item
+
+[url "sfgmembers@vs-ssh.visualstudio.com:v3/sfgmembers/"]
+	insteadOf = ado:
+
+[url "sfgmembers@vs-ssh.visualstudio.com:v3/sfgmembers/core-data-services"]
+	insteadOf = ado-core:

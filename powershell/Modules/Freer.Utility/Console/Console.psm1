@@ -1,7 +1,4 @@
-[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseApprovedVerbs', '', Scope = 'function', Target = 'Prompt-*')]
-param()
-
-function Prompt-Input {
+function Read-Input {
     [CmdletBinding()]
     Param (
         [Parameter(ValueFromPipeline = $true, Mandatory = $true)]
@@ -91,7 +88,7 @@ function Prompt-Input {
     }
 }
 
-function Prompt-Choice {
+function Read-Choice {
     Param(
 
         [Parameter(ValueFromPipeline = $true, Mandatory = $true)]

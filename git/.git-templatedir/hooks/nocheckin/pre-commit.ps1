@@ -1,24 +1,34 @@
-param(
-    [Parameter(Mandator=$true)]
-    [string]$GitDir
-)
+param([switch]$Help)
 
-$script:NO_CHECKIN_PATTERN = '(?:^|\s+)@NOCHECKIN(?:\s*$)'
+$ErrorActionPreference = 'Stop'
 
-git diff --name-only --cached | % {
+if ($Help.IsPresent) {
+	Write-Host @'
+Pre-hook that automatically resets files that contains a @NOCHECKIN annotation based on the following pattern: `(#|//|/*)\s+@NOCHECKIN`
 
-    $local:Result = Join-Path $GitDir $_ | Select-String -Pattern $script:NO_CHECKIN_PATTERN -Context 2
-    # echo -e "\033[1;33mWARNING: ${s_file} contains the ""@NOCHECKIN flag\033[0m\n"
-
-    if ($local:Result.Count -gt 0) {
-        Write-Debug "`@NOCHECKIN flag found in $_"
-        $local:Result | Write-Verbose
-        git reset $_
-    }
-
+- If the file only contains one staged hunk (as in only 1 change near the annotation) the file will simply git reset and the commit will continue
+- If the file contains more than 1 change in addition to the annotation, the commit will cancel and suggest to stage changes interactively
+'@
+	exit 0
 }
 
-if (git diff --name-only --cached) {
-    Write-Debug "Nothing to commit"
-    exit 1
+$StagedFiles = git diff --name-only --cached --diff-filter=d
+$StagedFiles | Get-Item -Force | % {
+	$Hunks = ((git diff --cached --unified=0 $_) -join [System.Environment]::NewLine) -split "`n@@" | Select-Object -Skip 1
+
+	$HunksWithAnnotation = $Hunks | ? {
+		$_ | Select-String -Pattern "(#|//|/*)\s+@NOCHECKIN"
+	}
+
+	if ($HunksWithAnnotation.Count -eq 0) { return }
+
+	git reset $_
+
+	if ($Hunks.Count -eq 1) {
+		Write-Warning "$_ contains @NOCHECKIN annotation - unstaging"
+	}
+	else {
+		Write-HOST "WARNING: $_ contains @NOCHECKIN annotation with additional patches; using interactive staging" -ForegroundColor DarkYellow
+		bash -c "git add --patch $_ < /dev/tty"
+	}
 }

@@ -1,8 +1,0 @@
-[core]
-    editor = code -w
-
-[instaweb]
-    browser = firefox
-    local = true
-    httpd = apache2 -f
-    port = 4321

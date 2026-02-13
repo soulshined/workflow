@@ -1,5 +1,0 @@
-Scaffold:
-    ☐ Tests
-        ☐  Add ConvertTo-Scaffold Tests @30m
-    ☐ Documentation
-        ☐ Add type descriptors for custom objects

@@ -1,0 +1,210 @@
+@define-color light-beige rgba(189,179,149,0.8);
+@define-color beige rgba(189,179,149,1);
+@define-color green rgba(12,20,31, 1);
+@define-color light-green rgba(4,35,39,1);
+@define-color bright-green rgba(157,227,192,1);
+@define-color pastel-green rgba(112,197,191,1);
+@define-color urgent rgba(255,100,100,1);
+
+* {
+    font-family: 'Symbols Nerd Font Mono', monospace;
+    font-size: 14px;
+}
+
+menu {
+    border-radius: 3px;
+    background: @green;
+    color: @beige;
+}
+
+menuitem {
+    border-radius: 0px;
+}
+menuitem:hover {
+	background-color: @light-beige;
+	color: @green;
+}
+
+window#waybar {
+    background-color: rgba(0,0,0,0);
+    color: @beige;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: black;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: @light-beige;
+}
+
+#workspaces button.active {
+    background: inherit;
+	color: @pastel-green;
+	font-weight: bold;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: unset;
+	color: @beige;
+}
+
+#workspaces button.urgent {
+	animation-name: blink-urgent;
+	animation-duration: 0.75s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#clock,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#idle_inhibitor,
+#scratchpad,
+#mpris {
+    padding: 0 10px;
+    color: @beige;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+#clock {
+	font-weight: bold;
+}
+
+@keyframes blink-urgent {
+	to {
+		background-color: @urgent;
+		color: @green;
+		border-radius: 3px;
+	}
+}
+
+@keyframes blink {
+    to {
+        background-color: white;
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: black;
+}
+#pulseaudio {
+	background-color: @light-beige;
+	color: @green;
+	border-radius: 3px;
+}
+#pulseaudio:hover {
+    background-color: @beige;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+    color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#tray {
+    background-color: @light-green;
+	border: 1px solid @light-beige;
+	border-radius: 3px;
+	margin-left: 5px;
+}
+#tray:hover {
+	color: @green;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    /* background-color: #eb4d4b; */
+	background-color: @urgent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+}
+
+#privacy-item.audio-out {
+}
+#network.disconnected {
+	color: @urgent;
+}
+#custom-power-action {
+	padding: 0 4px;
+}

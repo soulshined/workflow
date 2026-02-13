@@ -1,19 +1,33 @@
 #!/usr/bin/env pwsh
 
-# mac target: /usr/local/bin
-# win target: ~./.git-commands
+parm( [switch]$Help )
 
-# creates a new branch point from current branch
+$ErrorActionPreference = 'Stop'
 
-if ($null -eq $args[0]) {
-    Write-Host 'No branch name given'
-    exit 0
+if ($Help.IsPresent) {
+	Write-Host @'
+	Creates a new branch from the current branch and current commit
+
+	Usage: git branchoff <branch name>
+'@
+	exit 0
 }
 
-if ($null -ne (git show-ref --heads | sls $args[0])) {
-    Write-Host 'Branch already exists'
-    exit 0
+if (!$args) { Write-Error "An existing local branch name is required" }
+
+New-Variable -Name BranchName -Value $args[0] -Scope Script -Option Readonly
+New-Variable -Name Pattern -Value "refs\/heads\/" -Scope Script
+
+git fetch --no-tags --quiet
+
+if ((git show-ref --heads --quiet | % { $_ -split $Pattern, 2 | Select -Index 1 }) -match $BranchName) {
+	Write-Error "Local branch already exists"
 }
 
-git checkout -b $args[0]
-git commit -m "Initial $($args[0]) branch point" --allow-empty --no-verify
+if ((git ls-remote --heads | % { $_ -split $Pattern, 2 | Select -Index 1 }) -match $BranchName) {
+	Write-Error "Remote branch already exists"
+}
+
+git checkout -b $BranchName
+git commit -m "Initial $BranchName branch point" --allow-empty --no-verify
+

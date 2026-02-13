@@ -1,0 +1,183 @@
+// -*- mode: jsonc -*-
+{
+	"output": "DP-5",
+	"height": 25, // Waybar height (to be removed for auto height)
+	"icon-size": 24,
+	"spacing": 4, // Gaps between modules (4px)
+
+	// Choose the order of the modules
+	"modules-left": [
+		"hyprland/workspaces",
+		"group/media"
+	],
+	"modules-center": [
+		"clock",
+		"clock#utc"
+	],
+	"modules-right": [
+		"privacy",
+		"idle_inhibitor",
+		"network",
+		"pulseaudio",
+		"tray",
+		"custom/power-action"
+	],
+	"group/media": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 500,
+			"transition-left-to-right": true
+		},
+		"modules": [
+			"custom/media-player",
+			"custom/media-player-previous",
+			"mpris",
+			"custom/media-player-next",
+			"custom/media-player-loop",
+			"custom/media-player-shuffle"
+		]
+	},
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"warp-on-scroll": false,
+		"format": "{name} {icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		}
+	},
+	"custom/media-player": {
+		"format": "󰽴",
+		"tooltip": true,
+		"interval": 60,
+		"exec": "playerctl metadata --format '{\"text\": \"{{ playerName }}\rTitle: {{title}}\rArtist: {{artist}}\rAlbum: {{album}}\rPosition: {{duration(position)}}/{{duration(mpris:length)}}\"}'",
+		"return-type": "json",
+		"tooltip-format": "{text}"
+	},
+	"custom/media-player-next": {
+		"format": "󰒭 ",
+		"tooltip": false,
+		"on-click": "playerctl next"
+	},
+	"custom/media-player-previous": {
+		"format": "    󰒮",
+		"tooltip": false,
+		"on-click": "playerctl previous"
+	},
+	"custom/media-player-loop": {
+		"format": "󰑖 ",
+		"tooltip": false,
+		"on-click": "playerctl loop track"
+	},
+	"custom/media-player-shuffle": {
+		"format": "󰒟 ",
+		"tooltip": false,
+		"on-click": "playerctl shuffle on"
+	},
+	"mpris": {
+		"interval": 30,
+		"format": "{status_icon}",
+		"tooltip" : false,
+		"player-icons": {
+			"default": "󰐎"
+		},
+		"status-icons": {
+			"playing": "󰐎",
+			"paused": "󰐎"
+		}
+		// "ignored-players": ["firefox"]
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"network": {
+		"format-ethernet": "󰞉 ",
+		"format-disconnected": "󰪎 ",
+		"tooltip-format": "󰞉 {ifname} via {gwaddri}",
+		"tooltip-format-ethernet": "󰞉 {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits}\n down: {bandwidthDownBits}",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50
+	},
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-out",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		],
+		"ignore-monitor": true,
+		"ignore": [
+			{
+				"type": "screenshare",
+				"name": "obs"
+			}
+		]
+	},
+	"tray": {
+		// "icon-size": 21,
+		"spacing": 10
+	},
+	"clock": {
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"clock#utc": {
+		"timezone": "UTC",
+		"format": "{:%H:%M}Z",
+		"tooltip": false
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "{volume}% {icon} {format_source}",
+		"format-bluetooth": "{volume}% {icon} {format_source}",
+		"format-bluetooth-muted": " {icon} {format_source}",
+		"format-muted": " {format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		}
+		// "on-click": "pavucontrol"
+	},
+	"custom/power-action": {
+		"format": "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+	}
+}

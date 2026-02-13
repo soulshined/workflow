@@ -10,7 +10,12 @@ function Test-GitRepository {
     )
 
     process {
-        $Target = Get-Item (Join-Path $Directory '.git' -Resolve) -Force
+		$GitDir = Join-Path $Directory '.git' -Resolve -ErrorAction Ignore
+		if (-not $GitDir) {
+			return $false
+		}
+
+        $Target = Get-Item $GitDir -Force -ErrorAction Ignore
         if (-not $Target) {
             return $false
         }
@@ -48,7 +53,7 @@ function Reset-GitRepository {
             $Message = "Reinitialize {0}" -f $Repositories[0]
         }
 
-        $Election = Prompt-Choice '&No', '&Yes' -Title "Reinitialize Git [🔍 $Directory]" -Message "$Message`n`e[1;31mContinue?`e[0m" -Default 0
+        $Election = Read-Choice '&No', '&Yes' -Title "Reinitialize Git [🔍 $Directory]" -Message "$Message`n`e[1;31mContinue?`e[0m" -Default 0
 
         if ($Election -eq 1) {
             $Repositories | % {
