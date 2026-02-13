@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = sync packages to $Env:WORKFLOW_DIR
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qqent > /home/archbtw/Programming/personal/workflow/dependencies/pacman/packages.txt'
