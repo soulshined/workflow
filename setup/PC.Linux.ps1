@@ -34,16 +34,12 @@ rustup default stable
 #PACKAGES SOURCE
 curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
 
-/bin/bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-source ~/.profile
-
-nvm --version
-nvm install node
-npm install -g $(cat $Env:WORKFLOW_DIR/dependencies/node/packages.txt)
-
 mkdir -p ~/Downloads
 cd ~/Downloads
 curl -o dotnet-install.sh https://dot.net/v1/dotnet-install.sh
 ./dotnet-install.sh -channel STS -version latest --install-dir $HOME/.dotnet
 ln -s $HOME/.dotnet/dotnet /usr/bin
+
+curl -o grimblast https://raw.githubusercontent.com/hyprwm/contrib/refs/heads/main/grimblast/grimblast
+chmod +x grimblast
+Move-Item grimblast /usr/local/bin

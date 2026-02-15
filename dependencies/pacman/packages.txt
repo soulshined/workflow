@@ -5,7 +5,6 @@ clang
 dunst
 efibootmgr
 firefox
-flameshot
 ghostty
 gnome-disk-utility
 gopls

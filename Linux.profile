@@ -7,6 +7,7 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 export EDITOR=nvim
 export POWERSHELL_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export WORKFLOW_DIR=~/Programming/personal/workflow
 
 export PATH="$PATH:$HOME/.local/bin:$WORKFLOW_DIR/git/custom commands"
