@@ -2,9 +2,7 @@ return {
 	'neovim/nvim-lspconfig',
 	version = '*',
 	config = function()
-		local lspconfig = require('lspconfig')
-
-		lspconfig.lua_ls.setup({
+		vim.lsp.config('lua_ls', {
 			settings = {
 				Lua = {
 					hint = { enable = true },
@@ -23,11 +21,8 @@ return {
 				},
 			},
 		})
-		lspconfig.gopls.setup({})
-		lspconfig.jsonls.setup{}
-		lspconfig.pylsp.setup{}
-		lspconfig.clangd.setup{}
-		lspconfig.yamlls.setup({
+
+		vim.lsp.config('yamlls', {
 			settings = {
 				yaml = {
 					redhat = {
